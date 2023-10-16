@@ -214,7 +214,7 @@
 		}
 
 		.navbar li a {
-			font-size: 2.9vh;
+			font-size: 2.7vh;
 			color: #FFA1F5;
 			font-weight: 500;
 
@@ -407,6 +407,35 @@
 				color: black;
 			}
 		}
+
+		.sliding-text-box {
+			background-color: #312e2e;
+			color: white;
+			margin: 0.8rem 0;
+			padding: 0.3rem 0;
+			width: 100%;
+			overflow: hidden;
+		}
+
+		.sliding-text {
+			width: 100%;
+			white-space: nowrap;
+			animation: slideRight 20s linear infinite;
+		}
+
+		@keyframes slideRight {
+			0% {
+				transform: translateX(100%);
+			}
+
+			100% {
+				transform: translateX(-100%);
+			}
+		}
+
+		.manan {
+			height: 100vh;
+		}
 	</style>
 	<!--  End call svg Styling -->
 </head>
@@ -455,6 +484,7 @@
 							Tyre Repair</a></li>
 					<li class="nav-item "><a href="breakdown.html" class="nav-link active ">Break-Down</a></li>
 					<li class="nav-item "><a href="jumpstart.html" class="nav-link active ">Jump-Start</a></li>
+					<li class="nav-item "><a href="service.html" class="nav-link active ">Services</a></li>
 
 					<!--<li class="nav-item"><a href="services.html" class="nav-link">Services</a></li> -->
 					<li class="nav-item "><a href="contact.php" class="nav-link active ">Contact
@@ -466,11 +496,30 @@
 
 	<!-- ========== End Section ========== -->
 
-
-	<div id="hero">
-		<video loop muted autoplay poster="" src="1011(6).mp4"></video>
-
+	<!-- sliding text -->
+	<div class="sliding-text-box">
+		<div class="sliding-text">
+			<b>At work home road motor way 24/7.</b><b>Cars vans 4 by 4.</b><b>Puncture tyre change.</b> <b>Flat tyre
+				change.</b> <b>Locknuts Removal.</b> <b>Tyre Balance.</b>
+		</div>
 	</div>
+	<!-- sliding text -->
+	<!-- ========== Start Section ========== -->
+	<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img src="pics/Tyre Puncture.png" class="d-block w-100 manan" alt="...">
+			</div>
+			<div class="carousel-item">
+				<img src="pics/Flat Tire (1).png" class="d-block w-100 manan" alt="...">
+			</div>
+			<div class="carousel-item">
+				<img src="pics/Locknuts Removal (4).png" class="d-block w-100 manan" alt="...">
+			</div>
+		</div>
+	</div>
+
+	<!-- ========== End Section ========== -->
 
 	<!-- sliding text -->
 	<div class="container mt-3" style="background-color: lightgreen;">
@@ -813,6 +862,7 @@
 		integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="animation.js"></script>
+	<script src="slider.js"></script>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="js/popper.min.js"></script>
