@@ -4,16 +4,7 @@
 include("connection.php");
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
 
-
-
-
-
-//Load Composer's autoloader
-require 'vendor/autoload.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -198,7 +189,7 @@ require 'vendor/autoload.php';
     }
 
     .navbar li a {
-      font-size: 2.9vh;
+      font-size: 2.4vh;
       color: #FFA1F5;
       font-weight: 500;
 
@@ -285,7 +276,7 @@ require 'vendor/autoload.php';
     </div>
   </div>
 
-  <nav class="navbar navbar-expand-lg  navbar-dark  " style="background-color: #ff2d94;">
+  <nav class="navbar navbar-expand-xl  navbar-dark  " style="background-color: #ff2d94;">
     <div class="container-fluid">
       <img src="pics/logo-removebg-preview.png" alt="pic" width="120px">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -308,6 +299,7 @@ require 'vendor/autoload.php';
               Tyre Repair</a></li>
           <li class="nav-item "><a href="breakdown.html" class="nav-link active ">Break-Down</a></li>
           <li class="nav-item "><a href="jumpstart.html" class="nav-link active ">Jump-Start</a></li>
+          <li class="nav-item "><a href="service.html" class="nav-link active ">Services</a></li>
 
           <!--<li class="nav-item"><a href="services.html" class="nav-link">Services</a></li> -->
           <li class="nav-item "><a href="contact.php" class="nav-link active ">Contact
@@ -573,35 +565,14 @@ if (isset($_POST["register"])) {
 
   if ($data) {
     //Create an instance; passing `true` enables exceptions
-    $mail = new PHPMailer(true);
+    {
+      $to = "contact@ifixtyre.com";
+      $subject = "test mail";
+      $message = " echo $name, $email,$phone, $car, $comments";
+      $from = "contact@ifixtyre.com";
+      $headers = "From: $from";
 
-    try {
-      //Server settings
-
-      $mail->isSMTP(); //Send using SMTP
-      $mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
-      $mail->SMTPAuth = true; //Enable SMTP authentication
-      $mail->Username = 'tahirbinkhadim@gmail.com'; //SMTP username
-      $mail->Password = 'qsnawvqidgmptzne'; //SMTP password
-      $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; //Enable implicit TLS encryption
-      $mail->Port = 465; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-
-      //Recipients
-      $mail->setFrom('tahirbinkhadim@gmail.com');
-      $mail->addAddress('contact@ifixtyre.com');
-
-
-      //Content
-      $mail->isHTML(true); //Set email format to HTML
-      $mail->Subject = 'Customer data';
-      $mail->Body = "<b>New customer send his data kindly check</b> 
-            name:$name <br> email is:$email  <br> phone no: $phone <br> car modedl is: $car <br> message: $comments";
-      $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-      $mail->send();
-
-    } catch (Exception $e) {
-      echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+      mail($to, $subject, $message, $headers);
     }
     echo "<script> alert('Thank You for Contacting Us')</script>";
   } else {
